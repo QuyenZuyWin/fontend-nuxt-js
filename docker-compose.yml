@@ -1,0 +1,17 @@
+version: '3'
+
+services:
+
+  node:
+    container_name: 'nuxt-node'
+    build: 'docker/nuxt'
+    ports:
+      - 80:3000
+    tty: true
+    volumes:
+      - ./frontend/:/srv/frontend
+      - ./frontend/node_modules:/srv/frontend/node_modules:delegated
+
+    working_dir: /srv/frontend
+    environment:
+      HOST: 0.0.0.0
